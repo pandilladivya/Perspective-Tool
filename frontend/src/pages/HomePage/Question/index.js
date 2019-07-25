@@ -15,7 +15,10 @@ class Question extends React.Component {
   };
   render () {
     return (
-      <Card> 
+      <Card style={{
+        margin: 40,
+        padding: 40,
+        boxShadow: '0 0 0 1px #e5e5e5'}}> 
         {this.state.question}
         <Radio.Group onChange={this.onChange} value={this.state.value}>
         <Radio value={1}></Radio>
