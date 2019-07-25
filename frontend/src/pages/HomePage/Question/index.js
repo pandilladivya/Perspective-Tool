@@ -17,34 +17,50 @@ const AgreeText = styled.span`
     font-size: 14px;
     `
 const InnerLayout = styled.div`
-margin: 40px;
-display: flex;
-flex-direction: row;
-justify-content: center;
+    margin: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+const CardLayout = styled(Card)`
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 600px;
+    padding: 40px;
+    box-shadow: 0 0 0 1px #e5e5e5;
+    text-align: center;
+    font-weight: 600;
 `
 class Question extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      question: this.props.question
+      question: this.props.question,
+      questionKey: this.props.questionKey
     }
   }
+
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({ 
+      question: nextProps.question,
+      questionKey: nextProps.questionKey
+     })
+  }
+
+
   onChange = e => {
     this.setState({
       value: e.target.value,
     });
+    console.log("keyyyy",this.state.questionKey);
+    
+    this.props.onAnswerSelect(this.state.questionKey,e.target.value)
   };
+
   render() {
     return (
-      <Card style={{
-        marginLeft: 40,
-        marginRight: 40,
-        width: 600,
-        padding: 40,
-        boxShadow: '0 0 0 1px #e5e5e5',
-        textAlign: 'center',
-        fontWeight: 600
-      }}>
+      <CardLayout>
         {this.state.question}
         <InnerLayout>
           <DisagreeText>Disagree</DisagreeText>
@@ -59,8 +75,7 @@ class Question extends React.Component {
           </Radio.Group>
           <AgreeText>Agree</AgreeText>
         </InnerLayout>
-
-      </Card>
+      </CardLayout>
     )
   }
 }

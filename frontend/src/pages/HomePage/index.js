@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect'
 
 import HomeComponent from './HomeComponent'
   
-import { listQuestions } from '../../modules/questions'
+import { listQuestions,submitAnswers } from '../../modules/questions'
 
 import {makeSelectQuestions} from '../../selectors/questions'
 
@@ -16,7 +16,8 @@ function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(
       { 
-        listQuestions
+        listQuestions,
+        submitAnswers
       },
       dispatch
     )

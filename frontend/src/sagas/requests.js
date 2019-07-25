@@ -1,8 +1,6 @@
 
 export default class Requests {
     static getQuestions() {
-
-            console.log("sfsdjfhdskhfgdskhfds");
         try {
             return request('http://localhost:2019/quiz', {
                 method: 'GET',
@@ -16,6 +14,23 @@ export default class Requests {
          
         throw err
     }
+}
+
+static submitAnswers(answers) {
+    try {
+        return request('http://localhost:2019/quiz', {
+            method: 'POST',
+            headers:{
+                "Content-Type":'application/json'
+            },
+            body: JSON.stringify(answers)
+        })
+    }
+ catch(err) {
+     console.log("srtrtwt");
+     
+    throw err
+}
 }
 }
 
