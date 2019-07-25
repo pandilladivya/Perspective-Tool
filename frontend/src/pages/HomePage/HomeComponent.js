@@ -16,12 +16,18 @@ export default class HomePage extends React.Component {
      })
   }
 
+  componentWillMount(){
+    this.props.actions.listQuestions()
+  }
+
   render () { 
+    console.log("tksjhkghsd",this.state.questions);
+    
     return (
-      <div style={{display:'flex',justifyContent:'center'}}>
-      <Card style={{marginTop:40}}>
-         <Question question={"You find it takes effort to introduce yourself to other people"} />
-      </Card>
+      <div style={{display:'flex',justifyContent:'center',flexDirection:'column',alignItems: 'center',margin:40}}>
+      {this.state.questions.map((question)=>{
+        return <Question question={question} />
+      })}
       </div>
     )
   }

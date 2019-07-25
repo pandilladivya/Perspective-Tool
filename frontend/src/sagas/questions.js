@@ -1,12 +1,13 @@
 import { types } from '../modules/questions/types'
 import { put, call, takeLatest } from 'redux-saga/effects'
 
-import { listQuestionsSuccess } from '../modules/questions' 
+import { listQuestionsSuccess } from '../modules/questions'
+import Request from './requests' 
  
 export function * list (data) {
   try { 
-    // const questions = Request.getQuestions()
-    // yield put(listQuestionsSuccess(questions))
+    const questions = yield call(Request.getQuestions)
+    yield put(listQuestionsSuccess(questions))
   } catch (err) { 
     console.log(err)
   }
