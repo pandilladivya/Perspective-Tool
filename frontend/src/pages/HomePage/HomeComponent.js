@@ -21,7 +21,7 @@ export default class HomePage extends React.Component {
       <div style={{display:'flex',justifyContent:'center'}}>
       <Card style={{marginTop:40}}>
          <Question question={"You find it takes effort to introduce yourself to other people"} />
-         </Card>
+      </Card>
       </div>
     )
   }

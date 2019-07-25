@@ -1,14 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 const path = require('path')
 const express = require('express')
 const csv=require('csvtojson')
 const app = express()
 app.use(express.json())
-const port = 3000
+const port = 2019
 
 let solutionList;
 
@@ -19,7 +14,7 @@ csv().fromFile(csvFilePath)
 })
 
 app.get('/quiz', (req, res) => {
-    const questionList = {}
+    const questionList = []
     solutionList.map((solution)=>{
         questionList.push(solution['Question'])
     })
@@ -44,7 +39,7 @@ const analyser = (resultMap, solution, answer) => {
 }
 
 app.post('/quiz', (req, res) => {
-    var answerList = req.body
+    answerList = req.body
     const resultMap = {
         'E':0,
         'I':0,
@@ -67,9 +62,3 @@ app.post('/quiz', (req, res) => {
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
