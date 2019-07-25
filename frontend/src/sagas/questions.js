@@ -13,6 +13,17 @@ export function * list (data) {
   }
 }
 
+export function * submit (data) {
+  try {
+    const response = yield call(Request.submitAnswers,data.answers)
+    console.log("responseresponse",response);
+    
+  }catch (err) { 
+    console.log(err)
+  }
+}
+
 export default function * questions () {
   yield takeLatest(types.LIST, list)
+  yield takeLatest(types.SUBMIT, submit)
 }

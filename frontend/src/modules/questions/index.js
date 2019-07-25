@@ -14,6 +14,13 @@ export const listQuestionsSuccess = (questions) => {
   }
 }
 
+export const submitAnswers = (answers) => {
+  return {
+    type: types.SUBMIT,
+    answers: answers
+  }
+}
+
 const initialState = fromJS({
     questions: []
 })

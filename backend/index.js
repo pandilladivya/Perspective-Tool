@@ -18,7 +18,7 @@ app.get('/quiz', (req, res) => {
     solutionList.map((solution)=>{
         questionList.push(solution['Question'])
     })
-    res.send(questionList)
+    res.send(Object.assign({}, questionList))
 })
 
 const analyser = (resultMap, solution, answer) => {
@@ -50,22 +50,14 @@ app.post('/quiz', (req, res) => {
         'P':0,
         'J':0
     }
-    if(answerList.length === solutionList.length){
-        answerList.map((answer, index)=>{
-            const solution = solutionList[index]
-            analyser(resultMap,solution, answer)
+    if(Object.keys(answerList).length === solutionList.length){
+        Object.keys(answerList).map((answerKey)=>{
+            const solution = solutionList[answerKey]
+            analyser(resultMap,solution, answerList[answerKey])
         })
-        res.send(resultMap)
-        res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-
+        res.send(resultMap) 
     }else{
         throw new Error('All answers should be given.')
     }
 })
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Headers","Access-Control-Allow-Headers")
-//   })
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
