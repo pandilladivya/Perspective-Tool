@@ -41,6 +41,17 @@ const analyser = (resultMap, solution, answer) => {
     }
 }
 
+function matchPersonalityType(result,pairs){
+    var personalityType = ''
+    pairs.map((pair)=>{
+        if(result[pair.charAt(0)]> result[pair.charAt(1)])
+            personalityType=personalityType+pair.charAt(0)
+        else
+            personalityType=personalityType+pair.charAt(1)
+    })
+    return personalityType
+}
+
 app.post('/quiz', (req, res) => {
     answerList = req.body
     const resultMap = {
@@ -57,8 +68,9 @@ app.post('/quiz', (req, res) => {
         Object.keys(answerList).map((answerKey)=>{
             const solution = solutionList[answerKey]
             analyser(resultMap,solution, answerList[answerKey])
-        })
-        res.send(resultMap) 
+        }) 
+        let pairs=['EI','SN','TF','PJ'] 
+        res.send(matchPersonalityType(resultMap,pairs)) 
     }else{
         throw new Error('All answers should be given.')
     }
