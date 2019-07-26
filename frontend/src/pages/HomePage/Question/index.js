@@ -9,25 +9,24 @@ const DisagreeText = styled.span`
     color: red;
     font-weight: 500;
     font-size: 14px;
+    margin-right: 30px;
     `
 
 const AgreeText = styled.span`
     color: green;
     font-weight: 500;
     font-size: 14px;
+    margin-left: 30px;
     `
 const InnerLayout = styled.div`
     margin: 40px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 `
-const CardLayout = styled(Card)`
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 600px;
-    padding: 40px;
-    box-shadow: 0 0 0 1px #e5e5e5;
+const CardLayout = styled(Card)` 
+    width: 600px; 
     text-align: center;
     font-weight: 600;
 `
