@@ -6,7 +6,7 @@ const cors = require('cors');
 const errorHandler = require('./helpers/error-handler');
 app.use(cors());
 app.use(express.json())
-const port = 2018
+const port = 4000
 
 let solutionList;
 

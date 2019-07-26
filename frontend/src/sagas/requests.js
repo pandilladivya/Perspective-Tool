@@ -1,7 +1,7 @@
 export default class Requests {
   static getQuestions() {
     try {
-      return request("http://localhost:2018/quiz", {
+      return request("http://localhost:4000/quiz", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -16,7 +16,7 @@ export default class Requests {
 
   static submitAnswers(answers) {
     try {
-      return request("http://localhost:2018/quiz", {
+      return request("http://localhost:4000/quiz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -31,7 +31,7 @@ export default class Requests {
 
 static createUser(email,response){
     try {
-        return request("http://localhost:2018/users/register", {
+        return request("http://localhost:4000/users/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -48,7 +48,7 @@ static createUser(email,response){
   
 static updateUserResponse(id,response){
   try {
-      return request("http://localhost:2018/users/"+id, {
+      return request("http://localhost:4000/users/"+id, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
