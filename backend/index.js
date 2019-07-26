@@ -2,8 +2,11 @@ const path = require('path')
 const express = require('express')
 const csv=require('csvtojson')
 const app = express()
+const cors = require('cors');
+const errorHandler = require('./helpers/error-handler');
+app.use(cors());
 app.use(express.json())
-const port = 2019
+const port = 2018
 
 let solutionList;
 
@@ -60,4 +63,7 @@ app.post('/quiz', (req, res) => {
         throw new Error('All answers should be given.')
     }
 })
+
+app.use('/users', require('./users/user.controller'));
+app.use(errorHandler);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

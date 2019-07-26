@@ -2,7 +2,7 @@
 export default class Requests {
     static getQuestions() {
         try {
-            return request('http://localhost:2019/quiz', {
+            return request('http://localhost:2018/quiz', {
                 method: 'GET',
                 headers:{
                     "Content-Type":'application/json'
@@ -18,7 +18,7 @@ export default class Requests {
 
 static submitAnswers(answers) {
     try {
-        return request('http://localhost:2019/quiz', {
+        return request('http://localhost:2018/quiz', {
             method: 'POST',
             headers:{
                 "Content-Type":'application/json'
