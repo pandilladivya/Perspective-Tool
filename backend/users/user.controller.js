@@ -13,7 +13,7 @@ module.exports = router;
  
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({}))
+        .then((response) => res.json(response))
         .catch(err => next(err));
 }
 

@@ -81,7 +81,7 @@ export default class HomePage extends React.Component {
         this.Countwarning()
       }
       else{
-        this.props.actions.submitAnswers(this.state.answers)
+        this.props.actions.submitAnswers(this.state.email,this.state.answers)
       }
       }}>Save & Continue</Button>
       </div>
