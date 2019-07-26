@@ -68,8 +68,8 @@ const Description = styled.div`
 export default class ResultsPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      response: this.props.response
+    this.state = { 
+        response : this.props.response
     }
   }
 
@@ -81,8 +81,7 @@ export default class ResultsPage extends React.Component {
 
   render() {
     const { response } = this.state
-    const type = 'ENTP'
-    const pairs = ['EI', 'SN', 'TF', 'PJ']
+    const type = response.personalityType || '    '
     return (
       <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', margin: 40 }}>
         <CardLayout>
@@ -125,7 +124,7 @@ export default class ResultsPage extends React.Component {
 
           </div>
          </CardLayout>
-
+      
 
       </div>
     )

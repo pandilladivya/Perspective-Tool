@@ -31,7 +31,14 @@ export const noteResult = (userResponse) => {
 
 const initialState = fromJS({
     questions: [],
-    userResponse:{}
+    userResponse:{
+      "personalityType": "ENFJ",
+      "_id": "5d3b69bc5446933b75c880ea",
+      "email": "divvu@jnkdf.com",
+      "createdDate": "2019-07-26T20:59:40.725Z",
+      "__v": 0,
+      "id": "5d3b69bc5446933b75c880ea"
+  }
 })
 
 export default function questions (state = initialState, action) {
