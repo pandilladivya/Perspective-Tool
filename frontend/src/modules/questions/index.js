@@ -14,10 +14,19 @@ export const listQuestionsSuccess = (questions) => {
   }
 }
 
-export const submitAnswers = (answers) => {
+export const submitAnswers = (email,answers) => {
   return {
     type: types.SUBMIT,
+    email: email,
     answers: answers
+  }
+}
+
+export const noteResult = (user,result) => {
+  return {
+    type: types.NOTE_RESULT,
+    user:user,
+    result:result
   }
 }
 
@@ -30,6 +39,11 @@ export default function questions (state = initialState, action) {
     case types.LIST_SUCCESS:
       return state
         .set('questions', action.questions)
+
+    case types.NOTE_RESULT:
+      return state
+        .set('result',action.result)
+        .set('user',action.user)
 
     default:
       return state
