@@ -15,10 +15,10 @@ export function * list (data) {
 
 export function * submit (data) {
   try {
-    const createdUser = yield call(Request.createUser,data.email)
     const response = yield call(Request.submitAnswers,data.answers)
+    const userResponse = yield call(Request.createUser,data.email,response.personalityType)
 
-    yield put(noteResult(createdUser,response))
+    yield put(noteResult(userResponse))
     console.log("responseresponse",response);
     
   }catch (err) { 

@@ -22,16 +22,16 @@ export const submitAnswers = (email,answers) => {
   }
 }
 
-export const noteResult = (user,result) => {
+export const noteResult = (userResponse) => {
   return {
     type: types.NOTE_RESULT,
-    user:user,
-    result:result
+    userResponse
   }
 }
 
 const initialState = fromJS({
-    questions: []
+    questions: [],
+    userResponse:{}
 })
 
 export default function questions (state = initialState, action) {
@@ -42,8 +42,7 @@ export default function questions (state = initialState, action) {
 
     case types.NOTE_RESULT:
       return state
-        .set('result',action.result)
-        .set('user',action.user)
+        .set('userResponse',action.userResponse)
 
     default:
       return state

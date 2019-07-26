@@ -7,6 +7,12 @@ const makeSelectQuestions = () =>
     return state.get('questions')
   })
 
+const makeSelectUserResponse = () =>
+createSelector(questions, state => {
+  return state.get('userResponse')
+})
+
 export {
-  makeSelectQuestions
+  makeSelectQuestions,
+  makeSelectUserResponse
 }

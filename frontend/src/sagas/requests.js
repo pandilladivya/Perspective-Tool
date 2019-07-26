@@ -27,9 +27,9 @@ export default class Requests {
       throw err;
     }
   }
-}
 
-function createUser(email){
+
+static createUser(email,response){
     try {
         return request("http://localhost:2018/users/register", {
           method: "POST",
@@ -37,13 +37,30 @@ function createUser(email){
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-              email:email
+              email:email,
+              personalityType:response
           })
         });
       } catch (err) { 
         throw err;
       }
     }
+  
+static updateUserResponse(id,response){
+  try {
+      return request("http://localhost:2018/users/"+id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          personalityType:response
+        })
+      });
+    } catch (err) { 
+      throw err;
+    }
+  }
 }
 
 function request(url, options) {

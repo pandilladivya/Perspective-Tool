@@ -2,22 +2,18 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import ResultsPage from './ResultsPage'
-  
-import { listQuestions,submitAnswers } from '../../modules/questions'
+import ResultsPage from './ResultsPage' 
 
-import {makeSelectQuestions} from '../../selectors/questions'
+import {makeSelectUserResponse} from '../../selectors/questions'
 
 const mapStateToProps = createStructuredSelector({ 
-  questions: makeSelectQuestions()
+  response: makeSelectUserResponse()
 })
 
 function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators(
       { 
-        listQuestions,
-        submitAnswers
       },
       dispatch
     )

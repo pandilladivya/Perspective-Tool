@@ -70,7 +70,7 @@ app.post('/quiz', (req, res) => {
             analyser(resultMap,solution, answerList[answerKey])
         }) 
         let pairs=['EI','SN','TF','PJ'] 
-        res.send(matchPersonalityType(resultMap,pairs)) 
+        res.send({personalityType: matchPersonalityType(resultMap,pairs)}) 
     }else{
         throw new Error('All answers should be given.')
     }

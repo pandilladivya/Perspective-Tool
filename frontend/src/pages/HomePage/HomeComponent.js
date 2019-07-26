@@ -82,6 +82,7 @@ export default class HomePage extends React.Component {
       }
       else{
         this.props.actions.submitAnswers(this.state.email,this.state.answers)
+        this.props.history.push('/results')
       }
       }}>Save & Continue</Button>
       </div>
